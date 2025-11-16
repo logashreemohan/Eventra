@@ -95,8 +95,8 @@ const Home = () => {
 
   // Handle vendor registration
   const handleVendorRegistration = () => {
-    // Navigate to login page with full-screen parameter
-    navigate('/login?fullscreen=true');
+    // Navigate directly to vendor signup page
+    navigate('/vendor-signup');
   };
 
   // Handle client hire

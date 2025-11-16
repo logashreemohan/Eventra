@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginNavbar from '../components/LoginNavbar';
-import Footer from '../components/Footer';
 import '../styles/Login.css';
 
 const ClientHire = () => {
@@ -75,9 +73,8 @@ const ClientHire = () => {
 
   return (
     <>
-      <LoginNavbar />
-      <div className="login-container">
-        <div className="login-form-container">
+      <div className="vendor-registration-container">
+        <div className="vendor-registration-form-container">
           <button onClick={() => navigate('/')} className="back-button">
             ← Back to Home
           </button>
@@ -311,7 +308,6 @@ const ClientHire = () => {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

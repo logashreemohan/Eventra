@@ -366,10 +366,13 @@
 }
 
 .vendor-button {
-  background-color: white;
+  background-color: #ffffff !important;
   width: 100%;
   padding: 15px;
   font-size: 1.2rem;
+  box-shadow: none;
+  border: 2px solid #E50914;
+  color: #E50914 !important;
 }
 
 .client-button {

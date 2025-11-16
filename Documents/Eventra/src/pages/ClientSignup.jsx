@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginNavbar from '../components/LoginNavbar';
 import Footer from '../components/Footer';
 import '../styles/Login.css';
 
@@ -46,7 +45,6 @@ const ClientSignup = () => {
 
   return (
     <>
-      <LoginNavbar />
       <div className="login-container">
         <div className="login-form-container">
           <button onClick={() => navigate('/login')} className="back-button">

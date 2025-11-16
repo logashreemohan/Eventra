@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import LoginNavbar from '../components/LoginNavbar';
-import Footer from '../components/Footer';
 import '../styles/Login.css';
 
 const Login = () => {
@@ -75,7 +73,6 @@ const Login = () => {
 
   return (
     <>
-      {isFullscreen ? null : <LoginNavbar />}
       <div className={isFullscreen ? "vendor-registration-container" : "login-container"}>
         <div className={isFullscreen ? "vendor-registration-form-container" : "login-form-container"}>
           {/* Back button for fullscreen mode */}
@@ -163,7 +160,6 @@ const Login = () => {
           )}
         </div>
       </div>
-      {!isFullscreen && <Footer />}
     </>
   );
 };
