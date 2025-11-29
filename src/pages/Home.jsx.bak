@@ -1,0 +1,431 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import BudgetCalculator from '../components/BudgetCalculator';
+import WeddingTimeline from '../components/WeddingTimeline';
+import ParticleBackground from '../components/ParticleBackground';
+import MoodBoard from '../components/MoodBoard';
+import WeddingChecklist from '../components/WeddingChecklist';
+import VendorComparison from '../components/VendorComparison';
+import InspirationGallery from '../components/InspirationGallery';
+import WeddingCountdown from '../components/WeddingCountdown';
+import WeatherWidget from '../components/WeatherWidget';
+import GuestManagement from '../components/GuestManagement';
+import VenueFinder from '../components/VenueFinder';
+import RealTimeChat from '../components/RealTimeChat';
+import FeatureDashboard from '../components/FeatureDashboard';
+import '../styles/Home.css';
+
+const Home = () => {
+  const navigate = useNavigate();
+  const [vendorCategories, setVendorCategories] = useState([
+    { id: 1, name: 'DJ', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkRSAad2_IVjI4UKxTTYPAt8SDLz1TuXtjTA&s', count: 125 },
+    { id: 2, name: 'Makeup Artist', image: 'https://ciceroni.in/cdn/shop/articles/top-12-bridal-makeup-artists-to-look-out-for-in-ahmedabad-480982.png?v=1683890124', count: 132 },
+    { id: 3, name: 'Dancer', image: 'https://blog.g3fashion.com/wp-content/uploads/2021/04/choreographers-for-wedding-dance-1024x652.jpg', count: 118 },
+    { id: 4, name: 'Decor', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80', count: 142 },
+    { id: 5, name: 'Photographer', image: 'https://cdn-blog.superprof.com/blog_in/wp-content/uploads/2020/01/in-photo-photo-1.jpg', count: 138 },
+    { id: 6, name: 'Food & Catering', image: 'https://nilacaterers.com/wp-content/uploads/2024/09/nila-august.jpg', count: 129 },
+    { id: 7, name: 'Invitation', image: 'https://cdn0.weddingwire.in/article/0978/original/1280/jpg/108790-the-murphy-studio.jpeg', count: 115 },
+    { id: 8, name: 'Nail Art', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm2grGrhIRd58QmGHWnpKbjIzTUcwrGNCl1g&s', count: 112 },
+    { id: 9, name: 'Mehandi', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAbZSdqM9Sm3XCGpbs6HvV5lr14fI_cOybQw&s', count: 120 },
+    { id: 10, name: 'Dress', image: 'https://cdn0.weddingwire.in/article-gallery-o/00000/3_2/1280/jpg/articulos-india/2019/non-troncales/wedding-couple-dresses/coolbluez-coupleweddingdress-16coupleweddingdress.webp', count: 127 },
+    { id: 11, name: 'Jewelry', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-v7v7bb6la-5nAeDWjDiSU2dJPDHNpxtYog&s', count: 114 },
+    { id: 12, name: 'Return Gifts', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUayD2ismoGSy3B-pbGt-WlnHOPNue3WXTew&s', count: 109 }
+  ]);
+
+  // Check for newly registered vendors and update counts
+  useEffect(() => {
+    const checkNewVendorRegistration = () => {
+      const newVendorData = localStorage.getItem('newVendorRegistered');
+      if (newVendorData) {
+        const newVendor = JSON.parse(newVendorData);
+        // Check if the registration is recent (within the last 5 seconds)
+        const currentTime = new Date().getTime();
+        if (currentTime - newVendor.timestamp < 5000) {
+          // Update the vendor count for the corresponding category
+          setVendorCategories(prevCategories => 
+            prevCategories.map(category => 
+              category.name === newVendor.category 
+                ? { ...category, count: category.count + 1 } 
+                : category
+            )
+          );
+          
+          // Remove the item from localStorage
+          localStorage.removeItem('newVendorRegistered');
+        }
+      }
+    };
+
+    // Check for new vendor registration when component mounts
+    checkNewVendorRegistration();
+
+    // Set up an interval to check periodically
+    const interval = setInterval(checkNewVendorRegistration, 1000);
+
+    // Clean up the interval when component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
+  // Features data
+  const features = [
+    { 
+      id: 1, 
+      title: 'Easy Booking', 
+      description: 'Book vendors with just a few clicks. Our streamlined process allows you to browse, compare, and book vendors in minutes. No more endless phone calls or emails - everything you need is right here.', 
+      icon: 'https://cdn-icons-png.flaticon.com/512/747/747310.png',
+      details: '24/7 availability, instant confirmations, real-time calendar sync'
+    },
+    { 
+      id: 2, 
+      title: 'Verified Vendors', 
+      description: 'Work with trusted professionals. Every vendor on our platform is thoroughly vetted and verified to ensure quality service. We check credentials, reviews, and past work to guarantee your satisfaction.', 
+      icon: 'https://cdn-icons-png.flaticon.com/512/1828/1828770.png',
+      details: 'Background checks, portfolio verification, insurance validation'
+    },
+    { 
+      id: 3, 
+      title: 'Price Comparison', 
+      description: 'Compare prices from multiple vendors. See transparent pricing from all vendors in one place. No hidden fees or surprise costs - just clear, upfront pricing so you can make informed decisions.', 
+      icon: 'https://cdn-icons-png.flaticon.com/512/6711/6711567.png',
+      details: 'Side-by-side comparison, budget tracking, price alerts'
+    },
+    { 
+      id: 4, 
+      title: 'Real Reviews', 
+      description: 'See authentic reviews from real couples. Make decisions based on genuine experiences from couples who have used our vendors. Filter reviews by wedding type, budget, and location.', 
+      icon: 'https://cdn-icons-png.flaticon.com/512/1077/1077035.png',
+      details: 'Photo verification, video testimonials, detailed feedback'
+    }
+  ];
+
+  // Stats data
+  const stats = [
+    { id: 1, value: '5000+', label: 'Happy Couples' },
+    { id: 2, value: '250+', label: 'Verified Vendors' },
+    { id: 3, value: '4.8/5', label: 'Average Rating' },
+    { id: 4, value: '98%', label: 'On-Time Delivery' }
+  ];
+
+  // Testimonials data with more entries and better animations
+  const testimonials = [
+    { 
+      id: 1, 
+      name: 'Priya & Rohan', 
+      text: 'Eventra made our wedding planning so much easier. We found amazing vendors and everything was perfectly coordinated!', 
+      rating: 5,
+      weddingDate: 'Dec 2024',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 2, 
+      name: 'Ankit & Sneha', 
+      text: 'The vendor comparison feature saved us both time and money. Highly recommend Eventra for wedding planning!', 
+      rating: 5,
+      weddingDate: 'Nov 2024',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 3, 
+      name: 'Meera & Arjun', 
+      text: 'Booking through Eventra was seamless. The vendors were professional and delivered exactly what they promised.', 
+      rating: 4,
+      weddingDate: 'Jan 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 4, 
+      name: 'Kavita & Rajesh', 
+      text: 'We were impressed by the quality of vendors available. Our wedding was perfect thanks to Eventra!', 
+      rating: 5,
+      weddingDate: 'Feb 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 5, 
+      name: 'Neha & Vikram', 
+      text: 'The customer service was exceptional. They helped us find vendors that matched our budget and vision.', 
+      rating: 5,
+      weddingDate: 'Mar 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 6, 
+      name: 'Pooja & Suresh', 
+      text: 'The booking process was so simple and straightforward. We saved so much time and stress!', 
+      rating: 4,
+      weddingDate: 'Apr 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 7, 
+      name: 'Ritu & Amit', 
+      text: 'Finding vendors through Eventra was a breeze. Their platform made our wedding planning so much easier!', 
+      rating: 5,
+      weddingDate: 'May 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 8, 
+      name: 'Sunita & Deepak', 
+      text: 'The variety of vendors on Eventra is impressive. We found exactly what we were looking for.', 
+      rating: 4,
+      weddingDate: 'Jun 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    },
+    { 
+      id: 9, 
+      name: 'Swati & Rahul', 
+      text: 'Eventra helped us stay within budget while getting premium services. Highly recommended!', 
+      rating: 5,
+      weddingDate: 'Jul 2025',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
+    }
+  ];
+
+  // Handle category click
+  const handleCategoryClick = (categoryName) => {
+    // Navigate to search results with the selected category
+    navigate('/search-results', { state: { vendor: categoryName } });
+  };
+
+  // Handle vendor registration
+  const handleVendorRegistration = () => {
+    // Navigate directly to vendor signup page
+    navigate('/vendor-signup');
+  };
+
+  // Handle client hire
+  const handleClientHire = () => {
+    navigate('/client-hire');
+  };
+
+  // Handle search
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // For now, navigate to search page
+    navigate('/search');
+  };
+
+  return (
+    <>
+      <div className="home-container">
+        {/* Navigation Bar */}
+        <Navbar />
+        
+        {/* Particle Background */}
+        <ParticleBackground />
+
+        {/* Hero Section with Family-friendly Image */}
+        <section className="hero-section animated-hero">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title animate-fade-in">Your Perfect Wedding Starts Here</h1>
+              <p className="hero-subtitle animate-fade-in-delay">Discover and book the best wedding vendors with ease. Plan your dream wedding with confidence.</p>
+              <form className="hero-search-form animate-fade-in-delay-2" onSubmit={handleSearch}>
+                <input 
+                  type="text" 
+                  placeholder="Search for vendors (e.g., photographers, decorators)" 
+                  className="search-input"
+                />
+                <button type="submit" className="search-button pulse-animation">Search</button>
+              </form>
+              <div className="hero-stats animate-fade-in-delay-3">
+                {stats.map(stat => (
+                  <div key={stat.id} className="stat-item bounce-animation">
+                    <div className="stat-value">{stat.value}</div>
+                    <div className="stat-label">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hero-image-container">
+              <img 
+                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                alt="Happy Family at Wedding" 
+                className="hero-image"
+              />
+              <div className="hero-quote">
+                <h2>"Your Marriage, Our Responsibility"</h2>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Wedding Countdown Timer */}
+        <WeddingCountdown />
+
+        {/* Weather Widget */}
+        <WeatherWidget />
+
+        {/* Vendor Categories Section */}
+        <section className="vendor-categories-section" id="vendors">
+          <div className="section-header animate-fade-in">
+            <h2 className="section-title">Popular Vendor Categories</h2>
+            <p className="section-subtitle">Find the perfect vendors for your special day</p>
+          </div>
+          <div className="vendor-categories-grid">
+            {vendorCategories.slice(0, 8).map((category, index) => (
+              <div 
+                key={category.id} 
+                className="vendor-category-card card-hover-animation"
+                onClick={() => handleCategoryClick(category.name)}
+                style={{ cursor: 'pointer', animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="category-image-container">
+                  <img src={category.image} alt={category.name} className="category-image" />
+                </div>
+                <div className="category-name">{category.name}</div>
+                <div className="category-count">{category.count} vendors</div>
+              </div>
+            ))}
+          </div>
+          <div className="view-all-categories">
+            <button className="view-all-button slide-animation" onClick={() => navigate('/search')}>
+              View All Categories
+            </button>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="how-it-works-section">
+          <div className="section-header animate-fade-in">
+            <h2 className="section-title">How Eventra Works</h2>
+            <p className="section-subtitle">Planning your wedding has never been easier</p>
+          </div>
+          <div className="steps-container">
+            <div className="step step-1 fade-in-up">
+              <div className="step-number">1</div>
+              <h3>Search Vendors</h3>
+              <p>Browse through our curated list of verified wedding vendors</p>
+            </div>
+            <div className="step step-2 fade-in-up-delay">
+              <div className="step-number">2</div>
+              <h3>Compare & Select</h3>
+              <p>Compare prices, portfolios, and reviews to find the perfect fit</p>
+            </div>
+            <div className="step step-3 fade-in-up-delay-2">
+              <div className="step-number">3</div>
+              <h3>Book & Confirm</h3>
+              <p>Secure your booking with our easy online process</p>
+            </div>
+            <div className="step step-4 fade-in-up-delay-3">
+              <div className="step-number">4</div>
+              <h3>Celebrate!</h3>
+              <p>Enjoy your special day with peace of mind</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="features-section">
+          <div className="section-header animate-fade-in">
+            <h2 className="section-title">Why Choose Eventra?</h2>
+            <p className="section-subtitle">We make wedding planning effortless and enjoyable with our comprehensive platform designed for your special day</p>
+          </div>
+          <div className="features-grid">
+            {features.map((feature, index) => (
+              <div key={feature.id} className="feature-card card-hover-animation" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="feature-icon">
+                  <img src={feature.icon} alt={feature.title} />
+                </div>
+                <h3 className="feature-title">{feature.title}</h3>
+                <p className="feature-description">{feature.description}</p>
+                <div className="feature-details">{feature.details}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Feature Dashboard */}
+        <FeatureDashboard />
+
+        {/* Budget Calculator */}
+        <BudgetCalculator />
+
+        {/* Wedding Timeline */}
+        <WeddingTimeline />
+
+        {/* Wedding Checklist */}
+        <WeddingChecklist />
+
+        {/* Vendor Comparison */}
+        <VendorComparison />
+
+        {/* Inspiration Gallery */}
+        <InspirationGallery />
+
+        {/* Guest Management */}
+        <GuestManagement />
+
+        {/* Venue Finder */}
+        <VenueFinder />
+
+        {/* Real-time Chat */}
+        <RealTimeChat />
+
+        {/* Mood Board */}
+        <MoodBoard />
+
+        {/* Testimonials Section */}
+        <section className="testimonials-section">
+          <div className="section-header animate-fade-in">
+            <h2 className="section-title">What Our Couples Say</h2>
+            <p className="section-subtitle">Real stories from real weddings</p>
+          </div>
+          <div className="testimonials-container">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={testimonial.id} 
+                className="testimonial-card card-hover-animation"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="testimonial-header">
+                  <img src={testimonial.image} alt={testimonial.name} className="testimonial-avatar" />
+                  <div className="testimonial-info">
+                    <h4>{testimonial.name}</h4>
+                    <div className="rating">
+                      {'★'.repeat(testimonial.rating)}
+                      {'☆'.repeat(5 - testimonial.rating)}
+                    </div>
+                    <div className="wedding-date">{testimonial.weddingDate}</div>
+                  </div>
+                </div>
+                <p className="testimonial-text">"{testimonial.text}"</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Vendor and Client Slides */}
+        <section className="slides-section">
+          <div className="slides-container">
+            <div className="slide vendor-slide animate-fade-in">
+              <div className="slide-content">
+                <h3>Register as a Vendor</h3>
+                <p>Join our platform to showcase your services to couples planning their special day. Reach more customers and grow your business.</p>
+                <button className="slide-button vendor-button" onClick={handleVendorRegistration}>Register Now</button>
+              </div>
+            </div>
+            <div className="slide client-slide animate-fade-in-delay">
+              <div className="slide-content">
+                <h3>Hire a Vendor</h3>
+                <p>Find the perfect vendors for your wedding. Browse through our curated selection of professionals and book with confidence.</p>
+                <button className="slide-button client-button" onClick={handleClientHire}>Hire Now</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Floating Action Button for Mobile */}
+        <div className="floating-action-button">
+          <button className="book-now-button pulse-animation">Book Now</button>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default Home;

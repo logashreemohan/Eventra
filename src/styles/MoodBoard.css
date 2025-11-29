@@ -1,0 +1,246 @@
+/* MoodBoard.css - Styling for the wedding inspiration mood board */
+
+.mood-board-section {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  margin: 40px 0;
+}
+
+body.dark-mode .mood-board-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+}
+
+.mood-board-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mood-board-toggle-button {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mood-board-toggle-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+}
+
+.mood-board-content {
+  margin-top: 30px;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+body.dark-mode .mood-board-content {
+  background: #1e1e1e;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mood-board-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .mood-board-title {
+  color: #ffffff;
+}
+
+.mood-board-subtitle {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .mood-board-subtitle {
+  color: #b0b0b0;
+}
+
+.mood-board-controls {
+  margin-bottom: 30px;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.category-button {
+  padding: 10px 20px;
+  background: #f8f9fa;
+  color: #2c3e50;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .category-button {
+  background: #2d2d2d;
+  color: #ffffff;
+  border: 2px solid #444;
+}
+
+.category-button:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .category-button:hover {
+  background: #3d3d3d;
+}
+
+.category-button.active {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border-color: #e74c3c;
+}
+
+.mood-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.mood-board-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+body.dark-mode .mood-board-item {
+  background: #2d2d2d;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mood-board-item:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .mood-board-item:hover {
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.mood-board-image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.mood-board-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.mood-board-item:hover .mood-board-image {
+  transform: scale(1.1);
+}
+
+.mood-board-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.mood-board-item-title {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+body.dark-mode .mood-board-item-title {
+  color: #ffffff;
+}
+
+.mood-board-description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+body.dark-mode .mood-board-description {
+  color: #b0b0b0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mood-board-section {
+    padding: 30px 15px;
+  }
+  
+  .mood-board-content {
+    padding: 25px;
+  }
+  
+  .mood-board-title {
+    font-size: 1.8rem;
+  }
+  
+  .category-filters {
+    gap: 10px;
+  }
+  
+  .category-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .mood-board-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mood-board-toggle-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .mood-board-title {
+    font-size: 1.5rem;
+  }
+  
+  .mood-board-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mood-board-info {
+    padding: 15px;
+  }
+  
+  .mood-board-item-title {
+    font-size: 1.1rem;
+  }
+}

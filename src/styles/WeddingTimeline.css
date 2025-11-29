@@ -1,0 +1,398 @@
+/* WeddingTimeline.css - Styling for the wedding planning timeline */
+
+.wedding-timeline-section {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f3f5 100%);
+  margin: 40px 0;
+}
+
+body.dark-mode .wedding-timeline-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.wedding-timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.timeline-toggle-button {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeline-toggle-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(155, 89, 182, 0.6);
+}
+
+.wedding-timeline-content {
+  margin-top: 30px;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+body.dark-mode .wedding-timeline-content {
+  background: #1e1e1e;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.timeline-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+body.dark-mode .timeline-title {
+  color: #ffffff;
+}
+
+.timeline-subtitle {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .timeline-subtitle {
+  color: #b0b0b0;
+}
+
+.timeline-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+body.dark-mode .timeline-controls {
+  background: #2d2d2d;
+}
+
+.wedding-date-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wedding-date-input label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+body.dark-mode .wedding-date-input label {
+  color: #ffffff;
+}
+
+.date-input {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #2c3e50;
+  background: white;
+}
+
+body.dark-mode .date-input {
+  background: #1e1e1e;
+  border: 2px solid #444;
+  color: #ffffff;
+}
+
+.calculate-button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.calculate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.calculate-button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+body.dark-mode .calculate-button:disabled {
+  background: #555;
+}
+
+.reset-timeline-button {
+  padding: 12px 20px;
+  background: #ecf0f1;
+  color: #2c3e50;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .reset-timeline-button {
+  background: #444;
+  color: #ffffff;
+}
+
+.reset-timeline-button:hover {
+  background: #bdc3c7;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .reset-timeline-button:hover {
+  background: #555;
+}
+
+.timeline-events {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.timeline-event {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  text-align: left;
+  transition: all 0.3s ease;
+  border-left: 5px solid #9b59b6;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+body.dark-mode .timeline-event {
+  background: #2d2d2d;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.timeline-event:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .timeline-event:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.timeline-event.completed {
+  border-left-color: #27ae60;
+  opacity: 0.8;
+}
+
+.timeline-event.completed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(39, 174, 96, 0.1), transparent);
+  z-index: 0;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.event-number {
+  background: #9b59b6;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.timeline-event.completed .event-number {
+  background: #27ae60;
+}
+
+.event-title {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin: 0;
+  flex: 1;
+}
+
+body.dark-mode .event-title {
+  color: #ffffff;
+}
+
+.complete-button {
+  padding: 8px 15px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.complete-button:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.complete-button.completed {
+  background: #27ae60;
+}
+
+.complete-button.completed:hover {
+  background: #219653;
+}
+
+.event-content {
+  position: relative;
+  z-index: 1;
+}
+
+.event-description {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+body.dark-mode .event-description {
+  color: #b0b0b0;
+}
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-date label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+body.dark-mode .event-date label {
+  color: #ffffff;
+}
+
+.event-date-input {
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #2c3e50;
+  background: white;
+  width: fit-content;
+}
+
+body.dark-mode .event-date-input {
+  background: #1e1e1e;
+  border: 2px solid #444;
+  color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wedding-timeline-section {
+    padding: 30px 15px;
+  }
+  
+  .wedding-timeline-content {
+    padding: 25px;
+  }
+  
+  .timeline-title {
+    font-size: 1.8rem;
+  }
+  
+  .timeline-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .event-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .event-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .event-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-toggle-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.5rem;
+  }
+  
+  .timeline-event {
+    padding: 20px;
+  }
+  
+  .event-number {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .event-title {
+    font-size: 1.1rem;
+  }
+  
+  .complete-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

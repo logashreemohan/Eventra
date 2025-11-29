@@ -1,0 +1,262 @@
+/* FeaturesOverview.css */
+.features-overview {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+  border-radius: 20px;
+}
+
+.features-title {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.features-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.icon-emoji {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 50%;
+}
+
+.feature-name {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.feature-description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  min-height: 100px;
+}
+
+.explore-btn {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* CTA Section */
+.features-cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.features-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.features-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: #3498db;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Dark mode support */
+body.dark-mode .features-overview {
+  color: #ecf0f1;
+}
+
+body.dark-mode .features-title {
+  background: linear-gradient(135deg, #5dade2, #af7ac5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .features-header {
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.3), rgba(52, 73, 94, 0.3));
+}
+
+body.dark-mode .feature-card {
+  background: #2c3e50;
+}
+
+body.dark-mode .feature-name {
+  color: #ecf0f1;
+}
+
+body.dark-mode .feature-description {
+  color: #bdc3c7;
+}
+
+body.dark-mode .icon-emoji {
+  background: rgba(93, 173, 226, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .features-overview {
+    padding: 15px;
+  }
+  
+  .features-title {
+    font-size: 2.2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .features-cta h2 {
+    font-size: 2rem;
+  }
+  
+  .features-cta p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-title {
+    font-size: 1.8rem;
+  }
+  
+  .features-subtitle {
+    font-size: 1rem;
+  }
+  
+  .feature-card {
+    padding: 20px;
+  }
+  
+  .feature-name {
+    font-size: 1.3rem;
+  }
+  
+  .features-cta {
+    padding: 40px 15px;
+  }
+  
+  .features-cta h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

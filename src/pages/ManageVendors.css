@@ -1,0 +1,292 @@
+.manage-vendors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.vendors-header {
+  margin-bottom: 30px;
+}
+
+.vendors-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.vendors-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.vendors-filters {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: end;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.filter-group select,
+.filter-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.vendors-table-container {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.table-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.vendors-table-wrapper {
+  overflow-x: auto;
+}
+
+.vendors-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.vendors-table th,
+.vendors-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.vendors-table th {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.vendors-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.vendor-info .vendor-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3px;
+}
+
+.vendor-info .vendor-email {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.contact-info .phone {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.approved {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.status-badge.pending {
+  background: #fff8e1;
+  color: #ffc107;
+}
+
+.status-badge.rejected {
+  background: #ffebee;
+  color: #ff6b6b;
+}
+
+.status-badge.suspended {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #ffc107;
+  font-size: 0.9rem;
+}
+
+.rating-value {
+  color: #333;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.no-rating {
+  color: #999;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.view-btn,
+.approve-btn,
+.reject-btn,
+.suspend-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.view-btn {
+  background: #4a90e2;
+  color: white;
+}
+
+.view-btn:hover {
+  background: #357ae8;
+}
+
+.approve-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.approve-btn:hover {
+  background: #43a047;
+}
+
+.reject-btn {
+  background: #ff6b6b;
+  color: white;
+}
+
+.reject-btn:hover {
+  background: #ff5252;
+}
+
+.suspend-btn {
+  background: #ff9800;
+  color: white;
+}
+
+.suspend-btn:hover {
+  background: #f57c00;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0 0 15px 0;
+}
+
+.summary-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vendors-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-group {
+    min-width: 100%;
+  }
+  
+  .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .view-btn,
+  .approve-btn,
+  .reject-btn,
+  .suspend-btn {
+    width: 100%;
+  }
+}
